@@ -4,11 +4,20 @@ import { useContext } from "react";
 import FavoritesContext from "../../Contexts/FavoritesContext";
 
 const Pokemon = ({ data }) => {
-  const { favoritesPokemons, updateFavoritesPokemons } =
-    useContext(FavoritesContext);
+  const {
+    favoritesPokemons,
+    updateFavoritesPokemons,
+    setFavorites,
+    favoritesKey,
+  } = useContext(FavoritesContext);
 
   const onHeartClick = () => {
-    updateFavoritesPokemons(data.name);
+    updateFavoritesPokemons(
+      data.name,
+      favoritesPokemons,
+      setFavorites,
+      favoritesKey
+    );
   };
 
   const heart = favoritesPokemons.includes(data.name) ? (

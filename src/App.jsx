@@ -8,6 +8,7 @@ import { FavoriteProvider } from "./Contexts/FavoritesContext";
 import Theme from "./Styles/theme";
 import { Route, Routes } from "react-router-dom";
 import Favorites from "./Components/Favorites";
+import { updateFavoritesPokemons } from "./Utils/updateFavoritesPokemons";
 
 const favoritesKey = "f";
 
@@ -59,16 +60,6 @@ function App() {
     setLoading(false);
   };
 
-  const updateFavoritesPokemons = (name) => {
-    const updateFavorites = [...favorites];
-    const favoriteIndex = favorites.indexOf(name);
-    favoriteIndex >= 0
-      ? updateFavorites.splice(favoriteIndex, 1)
-      : updateFavorites.push(name);
-    setFavorites(updateFavorites);
-    window.localStorage.setItem(favoritesKey, JSON.stringify(updateFavorites));
-  };
-
   useEffect(() => {
     loadFavoritesPokemons();
     fetchPokemons();
@@ -81,6 +72,7 @@ function App() {
           favoritesPokemons: favorites,
           setFavorites: setFavorites,
           updateFavoritesPokemons: updateFavoritesPokemons,
+          favoritesKey: "f",
         }}
       >
         <Navbar />

@@ -1,8 +1,10 @@
 import * as Styled from "./styles";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const SearchBar = ({ onSearchHandler }) => {
   const [search, setSearch] = useState("");
+  const location = useLocation();
 
   const onChangeHandler = (e) => {
     setSearch(e.target.value);
@@ -17,7 +19,7 @@ const SearchBar = ({ onSearchHandler }) => {
   };
 
   return (
-    <Styled.Container>
+    <Styled.Container location={location}>
       <Styled.InputContainer>
         <Styled.Input
           onChange={onChangeHandler}
