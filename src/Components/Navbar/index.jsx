@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import FavoritesContext from "../../Contexts/FavoritesContext";
+import SearchContext from "../../Contexts/SearchContext";
 import * as Styled from "./styles";
 
 const Navbar = () => {
   const { favoritesPokemons } = useContext(FavoritesContext);
+  const { setSearched } = useContext(SearchContext);
   const location = useLocation();
 
   const reload = () => {
@@ -14,15 +16,43 @@ const Navbar = () => {
   return (
     <Styled.Container>
       {location.pathname === "/" ? (
-        <Styled.NavLink onClick={reload}><Styled.Logo /></Styled.NavLink>
+        <Styled.NavLink
+          onClick={() => {
+            reload();
+            setSearched(false);
+          }}
+        >
+          <Styled.Logo />
+        </Styled.NavLink>
       ) : (
-        <Styled.NavLink to="/"><Styled.Logo /></Styled.NavLink>
+        <Styled.NavLink
+          onClick={() => {
+            setSearched(false);
+          }}
+          to="/"
+        >
+          <Styled.Logo />
+        </Styled.NavLink>
       )}
       <Styled.NavLinks>
         {location.pathname === "/" ? (
-          <Styled.NavLink onClick={reload}>Home</Styled.NavLink>
+          <Styled.NavLink
+            onClick={() => {
+              reload();
+              setSearched(false);
+            }}
+          >
+            Home
+          </Styled.NavLink>
         ) : (
-          <Styled.NavLink to="/">Home</Styled.NavLink>
+          <Styled.NavLink
+            onClick={() => {
+              setSearched(false);
+            }}
+            to="/"
+          >
+            Home
+          </Styled.NavLink>
         )}
         <Styled.NavLink to="/favorites">
           Favorites{" "}

@@ -76,8 +76,10 @@ function App() {
           favoritesKey: "f",
         }}
       >
-        <Navbar />
-        <SearchProvider value={{ searched: searched, setSearched: setSearched }} >
+        <SearchProvider
+          value={{ searched: searched, setSearched: setSearched }}
+        >
+          <Navbar />
           <SearchBar onSearchHandler={onSearchHandler} />
           <Routes>
             <Route
