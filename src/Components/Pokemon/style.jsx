@@ -2,6 +2,9 @@ import { Heart } from "phosphor-react";
 import styled from "styled-components";
 
 export const Container = styled.div`
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   width: 12.5rem;
   height: 12.5rem;
   margin: 1rem;
@@ -77,6 +80,7 @@ export const Types = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 0.7rem;
 
   @media screen and (max-width: 740px) {
     flex-direction: row;
@@ -86,7 +90,7 @@ export const Types = styled.div`
 export const Type = styled.p`
   font-size: 0.75rem;
   margin-right: 0.5rem;
-  margin-top: 0.7rem;
+  margin-bottom: 0.2rem;
   color: ${({ type }) => {
     if (type === "grass") return "#a1ffb3";
     else if (type === "electric") return "#000000";

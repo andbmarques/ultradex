@@ -1,8 +1,9 @@
 import * as Styled from "./style";
 import Pokemon from "../Pokemon";
 import Pagination from "../Pagination";
+import { useEffect } from "react";
 
-const Pokedex = ({ pokemons, loading, page, totalPages, setPage }) => {
+const Pokedex = ({ pokemons, loading, page, totalPages, setPage, fetchPokemons }) => {
   const onLeftClick = () => {
     if (page > 0) setPage(page - 1);
     console.log(page)
@@ -11,6 +12,10 @@ const Pokedex = ({ pokemons, loading, page, totalPages, setPage }) => {
   const onRightClick = () => {
     if (page + 1 !== totalPages) setPage(page + 1);
   };
+
+  useEffect(() => {
+    fetchPokemons();
+  }, [])
 
   return (
     <Styled.Container>

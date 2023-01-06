@@ -6,6 +6,8 @@ import Pokedex from "./Components/Pokedex";
 import SearchBar from "./Components/Searchbar";
 import { FavoriteProvider } from "./Contexts/FavoritesContext";
 import Theme from "./Styles/theme";
+import { Route, Routes } from "react-router-dom";
+import Favorites from "./Components/Favorites";
 
 const favoritesKey = "f";
 
@@ -35,16 +37,6 @@ function App() {
     }
   };
 
-  const updateFavoritesPokemons = (name) => {
-    const updateFavorites = [...favorites];
-    const favoriteIndex = favorites.indexOf(name);
-    favoriteIndex >= 0
-      ? updateFavorites.splice(favoriteIndex, 1)
-      : updateFavorites.push(name);
-    setFavorites(updateFavorites);
-    window.localStorage.setItem(favoritesKey, JSON.stringify(updateFavorites));
-  };
-
   const loadFavoritesPokemons = () => {
     const pokemons =
       JSON.parse(window.localStorage.getItem(favoritesKey)) || [];
@@ -67,6 +59,16 @@ function App() {
     setLoading(false);
   };
 
+  const updateFavoritesPokemons = (name) => {
+    const updateFavorites = [...favorites];
+    const favoriteIndex = favorites.indexOf(name);
+    favoriteIndex >= 0
+      ? updateFavorites.splice(favoriteIndex, 1)
+      : updateFavorites.push(name);
+    setFavorites(updateFavorites);
+    window.localStorage.setItem(favoritesKey, JSON.stringify(updateFavorites));
+  };
+
   useEffect(() => {
     loadFavoritesPokemons();
     fetchPokemons();
@@ -77,22 +79,35 @@ function App() {
       <FavoriteProvider
         value={{
           favoritesPokemons: favorites,
+          setFavorites: setFavorites,
           updateFavoritesPokemons: updateFavoritesPokemons,
         }}
       >
         <Navbar />
         <SearchBar onSearchHandler={onSearchHandler} />
-        {notFound ? (
-          <ErrorPage />
-        ) : (
-          <Pokedex
-            pokemons={pokemons}
-            loading={loading}
-            page={page}
-            totalPages={totalPages}
-            setPage={setPage}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              notFound ? (
+                <ErrorPage />
+              ) : (
+                <Pokedex
+                  pokemons={pokemons}
+                  loading={loading}
+                  page={page}
+                  totalPages={totalPages}
+                  setPage={setPage}
+                  fetchPokemons={fetchPokemons}
+                />
+              )
+            }
           />
-        )}
+          <Route
+            path="/favorites"
+            element={<Favorites setLoading={setLoading} loading={loading} />}
+          />
+        </Routes>
       </FavoriteProvider>
     </Theme>
   );

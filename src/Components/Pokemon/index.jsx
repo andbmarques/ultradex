@@ -30,9 +30,7 @@ const Pokemon = ({ data }) => {
         </Styled.Types>
         <Styled.ButtonsContainer>
           <Styled.Id>{data.id}</Styled.Id>
-          <Styled.SaveBtn onClick={onHeartClick}>
-            {heart}
-          </Styled.SaveBtn>
+          <Styled.SaveBtn onClick={onHeartClick}>{heart}</Styled.SaveBtn>
         </Styled.ButtonsContainer>
       </Styled.InfosContainer>
       <Styled.ImageContainer>

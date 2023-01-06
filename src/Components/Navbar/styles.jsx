@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as OriginalLogo } from './Logo.svg';
 
@@ -33,17 +34,22 @@ export const NavLinks = styled.div`
     display: flex;
     flex-direction: row;
     color: ${({ theme }) => theme.colors.GoldenPoppy};
+    text-decoration: none;
 
     @media screen and (max-width: 740px) {
         padding: 0.5rem 0;
     }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
     text-decoration: none;
     margin: 0 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
+
+    &:focus, &:active, &:active, &:visited {
+        color: ${({ theme }) => theme.colors.GoldenPoppy};
+    }
     
     &:hover {
         opacity: 0.7;
