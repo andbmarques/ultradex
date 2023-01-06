@@ -47,7 +47,7 @@ export const NavLink = styled(Link)`
     cursor: pointer;
     transition: all 0.2s ease;
 
-    &:focus, &:active, &:active, &:visited {
+    &:focus, &:active, &:active, &:visited, &:link {
         color: ${({ theme }) => theme.colors.GoldenPoppy};
     }
     
