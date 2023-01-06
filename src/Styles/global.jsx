@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
         font-family: ${({ theme }) => theme.fonts[1]};
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background: ${({ theme }) => theme.bgColor};
     }
@@ -31,5 +35,6 @@ export const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar-thumb:hover {
         background: ${({ theme }) => theme.bgColor};
     }
+
 
 `;

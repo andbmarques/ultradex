@@ -19,8 +19,8 @@ function App() {
   const [notFound, setNotFound] = useState(false);
   const [pokemons, setPokemons] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(30);
 
-  const itemsPerPage = 30;
 
   const fetchPokemons = async () => {
     try {
@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     loadFavoritesPokemons();
     fetchPokemons();
-  }, [page]);
+  }, [page, itemsPerPage]);
 
   return (
     <Theme>
@@ -91,6 +91,8 @@ function App() {
                   totalPages={totalPages}
                   setPage={setPage}
                   fetchPokemons={fetchPokemons}
+                  itemsPerPage={itemsPerPage}
+                  setItemsPerPage={setItemsPerPage}
                 />
               )
             }

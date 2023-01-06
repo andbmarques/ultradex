@@ -17,7 +17,7 @@ const Favorites = ({ loading, setLoading }) => {
         return await getPokemon(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
       });
       const result = await Promise.all(promises);
-      setFavoriteList(result);
+      setFavoriteList(result.sort((a, b) => a.id - b.id));
       setLoading(false);
     } catch (error) {
       console.log(error);

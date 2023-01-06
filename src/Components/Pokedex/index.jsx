@@ -3,10 +3,18 @@ import Pokemon from "../Pokemon";
 import Pagination from "../Pagination";
 import { useEffect } from "react";
 
-const Pokedex = ({ pokemons, loading, page, totalPages, setPage, fetchPokemons }) => {
+const Pokedex = ({
+  pokemons,
+  loading,
+  page,
+  totalPages,
+  setPage,
+  fetchPokemons,
+  setItemsPerPage,
+}) => {
   const onLeftClick = () => {
     if (page > 0) setPage(page - 1);
-    console.log(page)
+    console.log(page);
   };
 
   const onRightClick = () => {
@@ -15,7 +23,7 @@ const Pokedex = ({ pokemons, loading, page, totalPages, setPage, fetchPokemons }
 
   useEffect(() => {
     fetchPokemons();
-  }, [])
+  }, []);
 
   return (
     <Styled.Container>
@@ -26,6 +34,7 @@ const Pokedex = ({ pokemons, loading, page, totalPages, setPage, fetchPokemons }
           totalPages={totalPages}
           onLeftClick={onLeftClick}
           onRightClick={onRightClick}
+          setItemsPerPage={setItemsPerPage}
         />
       </Styled.HeaderContainer>
       <Styled.MainContainer>
@@ -40,6 +49,14 @@ const Pokedex = ({ pokemons, loading, page, totalPages, setPage, fetchPokemons }
           </Styled.PokemonListContainer>
         )}
       </Styled.MainContainer>
+      <Styled.FooterContainer>
+        <Pagination
+          page={page + 1}
+          totalPages={totalPages}
+          onLeftClick={onLeftClick}
+          onRightClick={onRightClick}
+        />
+      </Styled.FooterContainer>
     </Styled.Container>
   );
 };

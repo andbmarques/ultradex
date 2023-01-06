@@ -140,7 +140,9 @@ export const Id = styled.div`
   }
 `;
 
-export const SaveIcon = styled(Heart)`
+export const SaveIcon = styled(() => (
+  <Heart weight="fill" color="black" opacity={0.7} />
+))`
   width: auto;
   height: auto;
 `;
@@ -193,9 +195,14 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 11rem;
   height: 11rem;
+  position: relative;
+  left: 1rem;
+  top: -0.4rem;
 
   @media screen and (max-width: 740px) {
     width: 12rem;
     height: 12rem;
+    left: 0rem;
+    top: 0rem;
   }
 `;
