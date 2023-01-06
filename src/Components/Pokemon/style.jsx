@@ -58,7 +58,8 @@ export const InfosContainer = styled.div`
 
   @media screen and (max-width: 740px) {
     width: 50%;
-    position: relative;
+    position: absolute;
+    left: 0;
   }
 `;
 
@@ -177,10 +178,11 @@ export const ImageContainer = styled.div`
   opacity: 0.7;
 
   @media screen and (max-width: 740px) {
-    width: 50%;
+    width: 100%;
     align-items: flex-start;
     justify-content: flex-end;
     opacity: 0.95;
+    position: absolute;
   }
 `;
 
