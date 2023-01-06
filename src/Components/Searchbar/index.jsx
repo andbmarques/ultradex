@@ -1,8 +1,10 @@
 import * as Styled from "./styles";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import SearchContext from "../../Contexts/SearchContext";
 
 const SearchBar = ({ onSearchHandler }) => {
+  const { setSearched } = useContext(SearchContext);
   const [search, setSearch] = useState("");
   const location = useLocation();
 
@@ -16,6 +18,7 @@ const SearchBar = ({ onSearchHandler }) => {
   const onButtonClickHandler = () => {
     onSearchHandler(search.toLowerCase());
     setSearch("");
+    setSearched(true);
   };
 
   return (

@@ -9,6 +9,7 @@ import Theme from "./Styles/theme";
 import { Route, Routes } from "react-router-dom";
 import Favorites from "./Components/Favorites";
 import { updateFavoritesPokemons } from "./Utils/updateFavoritesPokemons";
+import { SearchProvider } from "./Contexts/SearchContext";
 
 const favoritesKey = "f";
 
@@ -20,7 +21,7 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(30);
-
+  const [searched, setSearched] = useState(false);
 
   const fetchPokemons = async () => {
     try {
@@ -76,32 +77,34 @@ function App() {
         }}
       >
         <Navbar />
-        <SearchBar onSearchHandler={onSearchHandler} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              notFound ? (
-                <ErrorPage />
-              ) : (
-                <Pokedex
-                  pokemons={pokemons}
-                  loading={loading}
-                  page={page}
-                  totalPages={totalPages}
-                  setPage={setPage}
-                  fetchPokemons={fetchPokemons}
-                  itemsPerPage={itemsPerPage}
-                  setItemsPerPage={setItemsPerPage}
-                />
-              )
-            }
-          />
-          <Route
-            path="/favorites"
-            element={<Favorites setLoading={setLoading} loading={loading} />}
-          />
-        </Routes>
+        <SearchProvider value={{ searched: searched, setSearched: setSearched }} >
+          <SearchBar onSearchHandler={onSearchHandler} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                notFound ? (
+                  <ErrorPage />
+                ) : (
+                  <Pokedex
+                    pokemons={pokemons}
+                    loading={loading}
+                    page={page}
+                    totalPages={totalPages}
+                    setPage={setPage}
+                    fetchPokemons={fetchPokemons}
+                    itemsPerPage={itemsPerPage}
+                    setItemsPerPage={setItemsPerPage}
+                  />
+                )
+              }
+            />
+            <Route
+              path="/favorites"
+              element={<Favorites setLoading={setLoading} loading={loading} />}
+            />
+          </Routes>
+        </SearchProvider>
       </FavoriteProvider>
     </Theme>
   );
