@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Message = styled.p`
     font-weight: bold;
     font-size: ${({ theme }) => theme.fontSizes.md};
+    text-align: center;
 `;
 
 export const Image = styled.img`

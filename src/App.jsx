@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import Favorites from "./Components/Favorites";
 import { updateFavoritesPokemons } from "./Utils/updateFavoritesPokemons";
 import { SearchProvider } from "./Contexts/SearchContext";
+import PokemonPage from "./Components/PokemonPage";
 
 const favoritesKey = "f";
 
@@ -105,6 +106,7 @@ function App() {
               path="/favorites"
               element={<Favorites setLoading={setLoading} loading={loading} />}
             />
+            <Route path="/:pokemonName" element={<PokemonPage />} />
           </Routes>
         </SearchProvider>
       </FavoriteProvider>

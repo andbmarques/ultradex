@@ -1,4 +1,5 @@
 import { Heart } from "phosphor-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -205,4 +206,8 @@ export const Image = styled.img`
     left: 0rem;
     top: 0rem;
   }
+`;
+
+export const PokemonLink = styled(Link)`
+  text-decoration: none;
 `;

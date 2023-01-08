@@ -29,7 +29,9 @@ const Pokemon = ({ data }) => {
   return (
     <Styled.Container type={data.types[0].type.name}>
       <Styled.InfosContainer>
-        <Styled.Name>{capitalizer(data.name)}</Styled.Name>
+        <Styled.PokemonLink to={`/${data.name}`}>
+          <Styled.Name>{capitalizer(data.name)}</Styled.Name>
+        </Styled.PokemonLink>
         <Styled.Types>
           {data.types.map((type, index) => (
             <Styled.Type type={type.type.name} key={index}>
