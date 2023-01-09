@@ -11,21 +11,29 @@ const Pagination = ({
   onLeftClick,
   onRightClick,
   setItemsPerPage,
+  isBottom,
 }) => {
   const { searched } = useContext(SearchContext);
 
   return (
     <Styled.Container>
-      {!searched && (
-        <Styled.ChangeLimitContainer>
-          <Menu menuButton={<Styled.MenuBtn>Limit</Styled.MenuBtn>} transition>
-            <MenuItem onClick={() => setItemsPerPage(25)}>25</MenuItem>
-            <MenuItem onClick={() => setItemsPerPage(30)}>30</MenuItem>
-            <MenuItem onClick={() => setItemsPerPage(50)}>50</MenuItem>
-            <MenuItem onClick={() => setItemsPerPage(100)}>100</MenuItem>
-            <MenuItem onClick={() => setItemsPerPage(200)}>200</MenuItem>
-          </Menu>
-        </Styled.ChangeLimitContainer>
+      {!isBottom && (
+        <>
+          {!searched && (
+            <Styled.ChangeLimitContainer>
+              <Menu
+                menuButton={<Styled.MenuBtn>Limit</Styled.MenuBtn>}
+                transition
+              >
+                <MenuItem onClick={() => setItemsPerPage(25)}>25</MenuItem>
+                <MenuItem onClick={() => setItemsPerPage(30)}>30</MenuItem>
+                <MenuItem onClick={() => setItemsPerPage(50)}>50</MenuItem>
+                <MenuItem onClick={() => setItemsPerPage(100)}>100</MenuItem>
+                <MenuItem onClick={() => setItemsPerPage(200)}>200</MenuItem>
+              </Menu>
+            </Styled.ChangeLimitContainer>
+          )}
+        </>
       )}
       {!searched && (
         <Styled.PaginationContainer>

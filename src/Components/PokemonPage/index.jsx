@@ -52,7 +52,7 @@ const PokemonPage = () => {
                   <Styled.Span>
                     <Styled.SpanLabel>
                         <Star weight="fill" style={{ marginRight: '0.4rem' }}/>
-                        ID
+                        ID:
                     </Styled.SpanLabel>
                     <Styled.SpanValue>
                       {pokemonData.id}
@@ -61,7 +61,7 @@ const PokemonPage = () => {
                   <Styled.Span>
                     <Styled.SpanLabel>
                         <Scales weight="regular" style={{ marginRight: '0.4rem' }}/>
-                        WEIGHT
+                        WEIGHT:
                     </Styled.SpanLabel>
                     <Styled.SpanValue>
                       {stringToNumber(pokemonData.weight) + 'kg'}
@@ -70,7 +70,7 @@ const PokemonPage = () => {
                   <Styled.Span>
                     <Styled.SpanLabel>
                         <Ruler weight="regular" style={{ marginRight: '0.4rem' }}/>
-                        HEIGHT
+                        HEIGHT:
                     </Styled.SpanLabel>
                     <Styled.SpanValue>
                       {stringToNumber(pokemonData.height) + 'm'}

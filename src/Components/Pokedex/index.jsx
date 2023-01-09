@@ -55,6 +55,7 @@ const Pokedex = ({
           totalPages={totalPages}
           onLeftClick={onLeftClick}
           onRightClick={onRightClick}
+          isBottom
         />
       </Styled.FooterContainer>
     </Styled.Container>

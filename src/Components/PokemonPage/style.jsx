@@ -46,51 +46,44 @@ export const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 1px solid gray;
   border-radius: 1rem;
-  overflow: hidden;
+  flex-direction: column;
 
   @media screen and (max-width: 740px) {
     width: 100%;
+    height: 50vh;
+    margin-top: -3rem;
   }
 `;
 
 export const Image = styled.img`
-  width: 90%;
+  width: 75%;
+  margin-top: 0rem;
+  position: absolute;
+  top: 3rem;
   height: auto;
-  -webkit-filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
-    drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white);
-  filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
-    drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white);
+  filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.3));
+
+  @media screen and (max-width: 740px) {
+    width: 75%;
+  }
 `;
 
 export const ImageBackground = styled.div`
-  position: absolute;
-  z-index: -10;
-  background-image: ${({ type }) => {
-    if (type === "grass") return `url(${sprites.grass})`;
-    else if (type === "fire") return `url(${sprites.fire})`;
-    else if (type === "water") return `url(${sprites.water})`;
-    else if (type === "electric") return `url(${sprites.electric})`;
-    else if (type === "bug") return `url(${sprites.bug})`;
-    else if (type === "normal") return `url(${sprites.normal})`;
-    else if (type === "poison") return `url(${sprites.poison})`;
-    else if (type === "rock") return `url(${sprites.rock})`;
-    else if (type === "ground") return `url(${sprites.ground})`;
-    else if (type === "fairy") return `url(${sprites.fairy})`;
-    else if (type === "flying") return `url(${sprites.flying})`;
-    else if (type === "fighting") return `url(${sprites.fighting})`;
-    else if (type === "psychic") return `url(${sprites.psychic})`;
-    else if (type === "steel") return `url(${sprites.steel})`;
-    else if (type === "ice") return `url(${sprites.ice})`;
-    else if (type === "ghost") return `url(${sprites.ghost})`;
-    else if (type === "dragon") return `url(${sprites.dragon})`;
-    else if (type === "dark") return `url(${sprites.dark})`;
-  }};
-  width: 55%;
-  height: 60%;
-  border-radius: 60%;
+  background-image: url(${sprites.grass});
+  width: 70%;
+  height: 20%;
+  border-radius: 50%;
   opacity: 0.7;
+  position: absolute;
+  bottom: 1rem;
+  z-index: -1;
+  filter: drop-shadow(5px 5px 7px #000);
+
+  @media screen and (max-width: 740px) {
+    width: 70%;
+    height: 20%;
+  }
 `;
 
 export const MainInfosContainer = styled.div`
@@ -139,38 +132,40 @@ export const SpanCollection = styled.div`
 
   @media screen and (max-width: 740px) {
     justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
   }
 `;
 
 export const Span = styled.span`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
   background-color: ${({ theme }) => theme.colors.GoldenPoppy};
   border-radius: 0.4rem;
-  padding: 0.1rem;
+  padding: 2rem 1rem;
 
   @media screen and (max-width: 740px) {
-    margin: 0 0.7rem;
+    margin: 0.5rem 0;
   }
 `;
 
 export const SpanLabel = styled.p`
-  padding: 0.3rem 0.5rem;
+  margin: 0 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const SpanValue = styled.p`
-  background-color: #f5d15e;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 1rem;
+  //padding: 1.5rem 1rem;
   font-weight: bold;
 `;
 
