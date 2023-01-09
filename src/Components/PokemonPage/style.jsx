@@ -40,7 +40,7 @@ export const MainHeaderContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 25%;
+  width: 21rem;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -48,31 +48,33 @@ export const ImageContainer = styled.div`
   position: relative;
   border-radius: 1rem;
   flex-direction: column;
+  align-self: center;
 
   @media screen and (max-width: 740px) {
-    width: 100%;
+    width: 21rem;
     height: 50vh;
-    margin-top: -3rem;
+    margin-top: -6rem;
   }
 `;
 
 export const Image = styled.img`
-  width: 75%;
+  width: 20rem;
   margin-top: 0rem;
-  position: absolute;
-  top: 3rem;
+  position: relative;
+  top: -0.5rem;
   height: auto;
   filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.3));
 
   @media screen and (max-width: 740px) {
-    width: 75%;
+    width: 13rem;
+    top: 2.5rem;
   }
 `;
 
 export const ImageBackground = styled.div`
   background-image: url(${sprites.grass});
-  width: 70%;
-  height: 20%;
+  width: 17rem;
+  height: 5rem;
   border-radius: 50%;
   opacity: 0.7;
   position: absolute;
@@ -81,8 +83,7 @@ export const ImageBackground = styled.div`
   filter: drop-shadow(5px 5px 7px #000);
 
   @media screen and (max-width: 740px) {
-    width: 70%;
-    height: 20%;
+    width: 15rem;
   }
 `;
 
